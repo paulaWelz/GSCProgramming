@@ -1,0 +1,25 @@
+CONTROL_START
+
+  PIN_INPUT(s2bm1)
+  PIN_INPUT(s2bm2)
+  PIN_INPUT(s3bm1)
+  PIN_INPUT(s3bm2)
+
+  PIN_OUTPUT(s2l1)
+  PIN_OUTPUT(s2l2)
+  PIN_OUTPUT(s3l1)
+  PIN_OUTPUT(s3l2)
+
+
+  ON PIN_FALLING(s2bm1) DO
+	PIN_SET(s2l1) ;
+	PIN_SET(s2l2) ;
+        SYSLOG("Licht an!")
+	END
+  ON PIN_RISING(s2bm1) DO
+	PIN_CLEAR(s2l1) ;
+	PIN_CLEAR(s2l2) ;
+        SYSLOG("Licht aus!")
+	END
+
+CONTROL_END
